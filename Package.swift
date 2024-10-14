@@ -16,14 +16,20 @@ let package = Package(
             targets: ["sam2"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/ml-explore/mlx-swift", from: "0.1.0")
+        .package(url: "https://github.com/ml-explore/mlx-swift", from: "0.10.0")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "sam2",
-            dependencies: [.product(name: "MLX", package: "mlx-swift")]),
+            dependencies: [
+                .product(name: "MLX", package: "mlx-swift"),
+                .product(name: "MLXRandom", package: "mlx-swift"),
+                .product(name: "MLXNN", package: "mlx-swift"),
+                .product(name: "MLXOptimizers", package: "mlx-swift"),
+                .product(name: "MLXFFT", package: "mlx-swift")
+            ]),
         .testTarget(
             name: "sam2Tests",
             dependencies: ["sam2"]),
